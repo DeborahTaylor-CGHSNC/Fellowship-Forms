@@ -10,13 +10,11 @@
   :root {
     --green: #1A4731;
     --green-mid: #2D6B4A;
-    --green-light: #3E8A5F;
     --green-pale: #EAF3EE;
     --green-faint: #F4F9F6;
     --gold: #C9970A;
     --gold-bright: #E5B020;
     --gold-pale: #FDF6E0;
-    --gold-faint: #FFFDF5;
     --white: #FFFFFF;
     --off-white: #F8F7F4;
     --text: #1A2E24;
@@ -25,336 +23,86 @@
     --border: #D0E0D8;
     --border-light: #E4EFE8;
     --shadow: 0 2px 12px rgba(26,71,49,0.08);
-    --shadow-md: 0 4px 24px rgba(26,71,49,0.12);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); min-height: 100vh; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--off-white);
-    color: var(--text);
-    min-height: 100vh;
-  }
-
-  /* ── HEADER ── */
-  .site-header {
-    background: var(--green);
-    padding: 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 3px solid var(--gold);
-  }
-  .header-inner {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 14px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .header-crest {
-    width: 40px;
-    height: 40px;
-    background: var(--gold);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--green);
-    flex-shrink: 0;
-    letter-spacing: -0.5px;
-  }
+  .site-header { background: var(--green); position: sticky; top: 0; z-index: 100; border-bottom: 3px solid var(--gold); }
+  .header-inner { max-width: 780px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  .header-crest { width: 40px; height: 40px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 16px; color: var(--green); flex-shrink: 0; }
   .header-text { flex: 1; }
-  .header-school {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold-bright);
-    line-height: 1;
-    margin-bottom: 3px;
-  }
-  .header-program {
-    font-family: 'Playfair Display', serif;
-    font-size: 15px;
-    color: #fff;
-    line-height: 1;
-  }
-  .header-right {
-    font-size: 12px;
-    color: rgba(255,255,255,0.55);
-    text-align: right;
-    line-height: 1.4;
-  }
+  .header-school { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 3px; }
+  .header-program { font-family: 'Playfair Display', serif; font-size: 15px; color: #fff; }
+  .header-right { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; line-height: 1.4; }
 
-  /* ── PROGRESS ── */
-  .progress-wrap {
-    background: var(--green);
-    padding: 0 24px 16px;
-  }
+  .progress-wrap { background: var(--green); padding: 0 24px 16px; }
   .progress-inner { max-width: 780px; margin: 0 auto; }
-  .progress-track {
-    height: 3px;
-    background: rgba(255,255,255,0.18);
-    border-radius: 2px;
-    overflow: hidden;
-    margin-bottom: 8px;
-  }
-  .progress-fill {
-    height: 100%;
-    background: var(--gold-bright);
-    border-radius: 2px;
-    transition: width 0.5s cubic-bezier(.4,0,.2,1);
-  }
-  .progress-steps {
-    display: flex;
-    justify-content: space-between;
-  }
-  .progress-dot {
-    font-size: 11px;
-    color: rgba(255,255,255,0.4);
-    transition: color 0.3s;
-  }
+  .progress-track { height: 3px; background: rgba(255,255,255,0.18); border-radius: 2px; overflow: hidden; margin-bottom: 8px; }
+  .progress-fill { height: 100%; background: var(--gold-bright); border-radius: 2px; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
+  .progress-steps { display: flex; justify-content: space-between; }
+  .progress-dot { font-size: 11px; color: rgba(255,255,255,0.4); transition: color 0.3s; }
   .progress-dot.done { color: var(--gold-bright); }
   .progress-dot.active { color: #fff; font-weight: 500; }
 
-  /* ── MAIN LAYOUT ── */
   .main { max-width: 780px; margin: 0 auto; padding: 32px 24px 64px; }
+  .card { background: var(--white); border: 1px solid var(--border-light); border-radius: 16px; padding: 32px 36px; box-shadow: var(--shadow); animation: fadeUp 0.35s ease both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ── CARDS ── */
-  .card {
-    background: var(--white);
-    border: 1px solid var(--border-light);
-    border-radius: 16px;
-    padding: 32px 36px;
-    box-shadow: var(--shadow);
-    animation: fadeUp 0.35s ease both;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  .section-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--green); margin-bottom: 8px; line-height: 1.3; }
+  .section-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
 
-  .section-eyebrow {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 8px;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--green);
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-  .section-desc {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 24px;
-  }
-
-  /* ── FORM ELEMENTS ── */
-  label.field-label {
-    display: block;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-mid);
-    margin-bottom: 6px;
-    margin-top: 16px;
-  }
-  input[type="text"], select, textarea {
-    width: 100%;
-    padding: 11px 14px;
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    background: var(--white);
-    color: var(--text);
-    transition: border-color 0.2s, box-shadow 0.2s;
-    appearance: none;
-  }
-  input[type="text"]:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: var(--green-mid);
-    box-shadow: 0 0 0 3px rgba(45,107,74,0.12);
-  }
+  label.field-label { display: block; font-size: 13px; font-weight: 500; color: var(--text-mid); margin-bottom: 6px; margin-top: 16px; }
+  input[type="text"], select, textarea { width: 100%; padding: 11px 14px; font-size: 14px; font-family: 'DM Sans', sans-serif; border: 1.5px solid var(--border); border-radius: 10px; background: var(--white); color: var(--text); transition: border-color 0.2s, box-shadow 0.2s; appearance: none; }
+  input[type="text"]:focus, select:focus, textarea:focus { outline: none; border-color: var(--green-mid); box-shadow: 0 0 0 3px rgba(45,107,74,0.12); }
   textarea { min-height: 90px; resize: vertical; line-height: 1.6; }
-  select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%233D5248' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 38px;
-    cursor: pointer;
-  }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%233D5248' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; cursor: pointer; }
 
-  /* ── CHIPS ── */
   .chip-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-  .chip {
-    padding: 7px 15px;
-    border-radius: 24px;
-    border: 1.5px solid var(--border);
-    background: var(--white);
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    cursor: pointer;
-    color: var(--text-mid);
-    transition: all 0.15s;
-    user-select: none;
-  }
+  .chip { padding: 7px 15px; border-radius: 24px; border: 1.5px solid var(--border); background: var(--white); font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; color: var(--text-mid); transition: all 0.15s; user-select: none; }
   .chip:hover { border-color: var(--green-mid); color: var(--green); }
-  .chip.selected {
-    background: var(--green);
-    border-color: var(--green);
-    color: #fff;
-  }
+  .chip.selected { background: var(--green); border-color: var(--green); color: #fff; }
   .chip-hint { font-size: 12px; color: var(--text-muted); margin-top: 8px; font-style: italic; }
 
-  /* ── FIELD CARDS ── */
   .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
   @media (max-width: 540px) { .field-grid { grid-template-columns: 1fr; } }
-  .field-card {
-    border: 1.5px solid var(--border-light);
-    border-radius: 12px;
-    padding: 14px 16px;
-    cursor: pointer;
-    transition: all 0.15s;
-    background: var(--green-faint);
-    position: relative;
-  }
+  .field-card { border: 1.5px solid var(--border-light); border-radius: 12px; padding: 14px 16px; cursor: pointer; transition: all 0.15s; background: var(--green-faint); position: relative; }
   .field-card:hover { border-color: var(--green-mid); background: var(--green-pale); }
-  .field-card.selected {
-    border-color: var(--green);
-    background: var(--green-pale);
-    box-shadow: 0 0 0 3px rgba(26,71,49,0.1);
-  }
-  .field-card.selected::after {
-    content: '✓';
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    font-size: 13px;
-    color: var(--green);
-    font-weight: 700;
-  }
+  .field-card.selected { border-color: var(--green); background: var(--green-pale); box-shadow: 0 0 0 3px rgba(26,71,49,0.1); }
+  .field-card.selected::after { content: '✓'; position: absolute; top: 10px; right: 12px; font-size: 13px; color: var(--green); font-weight: 700; }
   .field-card-title { font-size: 14px; font-weight: 500; color: var(--green); margin-bottom: 4px; padding-right: 20px; }
   .field-card-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-bottom: 5px; }
   .field-card-tag { font-size: 11px; color: var(--gold); font-style: italic; }
 
-  /* ── HIGHLIGHT BOX ── */
-  .highlight-box {
-    background: var(--gold-pale);
-    border-left: 3px solid var(--gold);
-    border-radius: 0 10px 10px 0;
-    padding: 12px 16px;
-    margin-bottom: 20px;
-    font-size: 13px;
-    color: var(--text-mid);
-    line-height: 1.6;
-  }
+  .highlight-box { background: var(--gold-pale); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 12px 16px; margin-bottom: 20px; font-size: 13px; color: var(--text-mid); line-height: 1.6; }
 
-  /* ── FOCUS STATEMENT ── */
-  .focus-card {
-    background: var(--green);
-    border-radius: 14px;
-    padding: 28px 32px;
-    text-align: center;
-    margin-bottom: 24px;
-  }
+  .focus-card { background: var(--green); border-radius: 14px; padding: 28px 32px; text-align: center; margin-bottom: 24px; }
   .focus-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
-  .focus-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    color: #fff;
-    line-height: 1.6;
-    font-style: italic;
-  }
+  .focus-text { font-family: 'Playfair Display', serif; font-size: 18px; color: #fff; line-height: 1.6; font-style: italic; }
   .focus-highlight { color: var(--gold-bright); font-style: normal; }
 
-  /* ── SUMMARY TABLE ── */
   .summary-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
   .summary-table tr { border-bottom: 1px solid var(--border-light); }
   .summary-table tr:last-child { border-bottom: none; }
   .summary-table td { padding: 10px 0; font-size: 13px; vertical-align: top; }
   .summary-table td:first-child { color: var(--text-muted); width: 140px; padding-right: 12px; }
-  .summary-table td:last-child { color: var(--text); font-weight: 400; }
 
-  /* ── NAV BUTTONS ── */
   .nav { display: flex; gap: 12px; margin-top: 28px; align-items: center; }
-  .btn-back {
-    padding: 11px 20px;
-    border-radius: 10px;
-    border: 1.5px solid var(--border);
-    background: transparent;
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    cursor: pointer;
-    color: var(--text-muted);
-    transition: all 0.15s;
-  }
+  .btn-back { padding: 11px 20px; border-radius: 10px; border: 1.5px solid var(--border); background: transparent; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; color: var(--text-muted); transition: all 0.15s; }
   .btn-back:hover { border-color: var(--green-mid); color: var(--green); }
-  .btn-next {
-    flex: 1;
-    padding: 13px 24px;
-    border-radius: 10px;
-    border: none;
-    background: var(--green);
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
-    font-family: 'DM Sans', sans-serif;
-    cursor: pointer;
-    transition: all 0.15s;
-    letter-spacing: 0.02em;
-  }
+  .btn-next { flex: 1; padding: 13px 24px; border-radius: 10px; border: none; background: var(--green); color: #fff; font-size: 14px; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.15s; }
   .btn-next:hover:not(:disabled) { background: var(--green-mid); }
   .btn-next:disabled { opacity: 0.35; cursor: not-allowed; }
-  .btn-submit {
-    width: 100%;
-    padding: 15px;
-    border-radius: 12px;
-    border: none;
-    background: var(--gold);
-    color: #fff;
-    font-size: 15px;
-    font-weight: 500;
-    font-family: 'DM Sans', sans-serif;
-    cursor: pointer;
-    transition: all 0.15s;
-    letter-spacing: 0.02em;
-    margin-top: 8px;
-  }
+  .btn-submit { width: 100%; padding: 15px; border-radius: 12px; border: none; background: var(--gold); color: #fff; font-size: 15px; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.15s; margin-top: 8px; }
   .btn-submit:hover:not(:disabled) { background: var(--gold-bright); }
   .btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
   .status-msg { font-size: 13px; text-align: center; margin-top: 12px; min-height: 20px; line-height: 1.5; }
   .status-msg.success { color: var(--green-mid); }
   .status-msg.error { color: #9B2C2C; }
 
-  /* ── SUCCESS SCREEN ── */
   .success-screen { text-align: center; padding: 20px 0; }
-  .success-icon {
-    width: 72px; height: 72px;
-    background: var(--green-pale);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 32px;
-  }
-  .success-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    color: var(--green);
-    margin-bottom: 10px;
-  }
+  .success-icon { width: 72px; height: 72px; background: var(--green-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 32px; }
+  .success-title { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--green); margin-bottom: 10px; }
   .success-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 420px; margin: 0 auto; }
   .divider { border: none; border-top: 1px solid var(--border-light); margin: 20px 0; }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -375,9 +123,7 @@
 </header>
 <div class="progress-wrap">
   <div class="progress-inner">
-    <div class="progress-track">
-      <div class="progress-fill" id="prog-fill" style="width:20%"></div>
-    </div>
+    <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:20%"></div></div>
     <div class="progress-steps" id="prog-steps"></div>
   </div>
 </div>
@@ -387,6 +133,13 @@
 </main>
 
 <script>
+// ---------------------------------------------------------------
+// STEP 1: Paste your Google Apps Script Web App URL below.
+// Replace everything between the quotes on the next line.
+// ---------------------------------------------------------------
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw01lCK9_ogcnrtWfJXIuNU_DOnbu7CAGN6oZK6Le8_qyUR9LSfFuOvfcByFcN1_40irA/exec";
+// ---------------------------------------------------------------
+
 const STEP_LABELS = ['About you','Strengths','Interests','Field + industry','Reflection'];
 const TOTAL = 5;
 let step = 0;
@@ -457,7 +210,10 @@ function toggleField(val) {
 
 function fieldCards() {
   return `<div class="field-grid">${FIELDS.map(f=>`
-    <div class="field-card${d.fields.includes(f.t)?' selected':''}" onclick="toggleField('${f.t.replace(/'/g,"\\'")}')" role="checkbox" aria-checked="${d.fields.includes(f.t)}" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')toggleField('${f.t.replace(/'/g,"\\'")}')">
+    <div class="field-card${d.fields.includes(f.t)?' selected':''}"
+      onclick="toggleField('${f.t.replace(/'/g,"\\'")}') "
+      role="checkbox" aria-checked="${d.fields.includes(f.t)}" tabindex="0"
+      onkeydown="if(event.key==='Enter'||event.key===' ')toggleField('${f.t.replace(/'/g,"\\'")}')">
       <div class="field-card-title">${f.t}</div>
       <div class="field-card-desc">${f.d}</div>
       <div class="field-card-tag">${f.tag}</div>
@@ -465,14 +221,14 @@ function fieldCards() {
 }
 
 function buildFocus() {
-  const allInd = [...d.industries, ...(d.otherIndustry.trim()?[d.otherIndustry.trim()]:[])];
+  const allInd = [...d.industries,...(d.otherIndustry.trim()?[d.otherIndustry.trim()]:[])];
   const fld = d.fields.length ? d.fields.join(' or ') : '___';
   const ind = allInd.length ? allInd.join(' or ') : '___';
   return `"I am looking for an internship in <span class="focus-highlight">${fld}</span> within the <span class="focus-highlight">${ind}</span> industry."`;
 }
 
 function buildSummary() {
-  const allInd = [...d.industries, ...(d.otherIndustry.trim()?[d.otherIndustry.trim()]:[])];
+  const allInd = [...d.industries,...(d.otherIndustry.trim()?[d.otherIndustry.trim()]:[])];
   const rows = [
     ['Name', `${d.firstName} ${d.lastName}`],
     ['Grade', d.grade],
@@ -489,21 +245,21 @@ const STEPS = [
   {
     eyebrow:'Welcome',
     title:'Internship Discovery Worksheet',
-    desc:'This guided worksheet helps you figure out where you\'d like to intern during the Business Fellowship. Work through each step honestly — there are no right or wrong answers.',
+    desc:"This guided worksheet helps you figure out where you'd like to intern during the Business Fellowship. Work through each step honestly — there are no right or wrong answers. It takes about 5 minutes.",
     body() {
       return `
         <div class="two-col">
           <div>
             <label class="field-label">First name</label>
-            <input type="text" id="fn" value="${d.firstName}" oninput="d.firstName=this.value.trim()" placeholder="First name" autocomplete="given-name"/>
+            <input type="text" value="${d.firstName}" oninput="d.firstName=this.value.trim()" placeholder="First name" autocomplete="given-name"/>
           </div>
           <div>
             <label class="field-label">Last name</label>
-            <input type="text" id="ln" value="${d.lastName}" oninput="d.lastName=this.value.trim()" placeholder="Last name" autocomplete="family-name"/>
+            <input type="text" value="${d.lastName}" oninput="d.lastName=this.value.trim()" placeholder="Last name" autocomplete="family-name"/>
           </div>
         </div>
         <label class="field-label">What grade will you be in when you take this class?</label>
-        <select id="grade" onchange="d.grade=this.value">
+        <select onchange="d.grade=this.value">
           <option value="" disabled ${!d.grade?'selected':''}>Select your grade...</option>
           ${GRADES.map(g=>`<option value="${g}" ${d.grade===g?'selected':''}>${g}</option>`).join('')}
         </select>`;
@@ -520,7 +276,7 @@ const STEPS = [
   {
     eyebrow:'Step 2 of 4 — Interests',
     title:'What genuinely excites you?',
-    desc:'Forget what sounds impressive for a moment. What topics or activities could you talk about for hours? Pick up to four.',
+    desc:"Forget what sounds impressive for a moment. What topics or activities could you talk about for hours? Pick up to four.",
     body() {
       return chips(EXCITEMENTS, d.excitements, 4, 'excitements') +
         `<label class="field-label" style="margin-top:16px">Anything not on this list?</label>
@@ -529,19 +285,25 @@ const STEPS = [
     valid:() => d.excitements.length >= 1 || d.otherExcitement.trim().length > 0
   },
   {
-    eyebrow:'Step 3 of 4 — Field + Industry',
+    eyebrow:'Step 3 of 4 — Field + industry',
     title:'Where do you fit in the business world?',
-    desc:'First, pick the business function you want to work in (1–2). Then choose the industries where you want to show up.',
+    desc:'First, pick the business function you want to work in (1–2 max). Then choose the industries where you want to show up.',
     body() {
       const locked = d.fields.length >= 2;
       return `
-        <div style="margin-bottom:6px"><span style="font-size:13px;font-weight:500;color:var(--text-mid)">Business field</span> <span style="font-size:12px;color:var(--text-muted)">(pick 1–2)</span></div>
+        <div style="margin-bottom:6px">
+          <span style="font-size:13px;font-weight:500;color:var(--text-mid)">Business field</span>
+          <span style="font-size:12px;color:var(--text-muted)"> (pick 1–2)</span>
+        </div>
         ${locked?'<div class="highlight-box">You\'ve selected 2 fields — that\'s the maximum. Deselect one if you\'d like to swap.</div>':''}
         ${fieldCards()}
         <label class="field-label" style="margin-top:20px">In a sentence or two, why does this field make sense for you?</label>
         <textarea oninput="d.whyField=this.value" placeholder="e.g. I've always been drawn to how brands tell their story...">${d.whyField}</textarea>
         <hr class="divider"/>
-        <div style="margin-bottom:6px"><span style="font-size:13px;font-weight:500;color:var(--text-mid)">Industry</span> <span style="font-size:12px;color:var(--text-muted)">(pick up to 3)</span></div>
+        <div style="margin-bottom:6px">
+          <span style="font-size:13px;font-weight:500;color:var(--text-mid)">Industry</span>
+          <span style="font-size:12px;color:var(--text-muted)"> (pick up to 3)</span>
+        </div>
         <div class="highlight-box">The sweet spot: an internship is most meaningful where your field meets an industry you care about. If you love Finance and you're passionate about sports, look for a finance role inside a sports org.</div>
         ${chips(INDUSTRIES, d.industries, 3, 'industries')}
         <label class="field-label" style="margin-top:16px">Any industry not on the list?</label>
@@ -552,7 +314,7 @@ const STEPS = [
   {
     eyebrow:'Step 4 of 4 — Reflection',
     title:'Your internship focus',
-    desc:'Here\'s where you landed. Read your focus statement, then answer two quick reflection questions before submitting.',
+    desc:"Here's where you landed. Read your focus statement, then answer two quick reflection questions before submitting.",
     body() {
       return `
         <div class="focus-card">
@@ -594,26 +356,37 @@ function render() {
     </div>` : ''}
   `;
   updateProgress();
-  setTimeout(()=>{
-    const btn = document.getElementById('btn-next');
-    if (btn) btn.disabled = !s.valid();
-  }, 10);
+  setTimeout(()=>{ const btn=document.getElementById('btn-next'); if(btn) btn.disabled=!s.valid(); }, 10);
 }
 
-function goNext() { if (STEPS[step].valid() && step < TOTAL-1) { step++; render(); window.scrollTo({top:0,behavior:'smooth'}); } }
-function goBack() { if (step > 0) { step--; render(); window.scrollTo({top:0,behavior:'smooth'}); } }
+function goNext() {
+  if (STEPS[step].valid() && step < TOTAL-1) { step++; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+}
+function goBack() {
+  if (step > 0) { step--; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+}
 
 async function submitForm() {
   const btn = document.getElementById('sub-btn');
   const msg = document.getElementById('sub-status');
-  if (!STEPS[step].valid()) { msg.className='status-msg error'; msg.textContent='Please answer both reflection questions before submitting.'; return; }
+
+  if (!STEPS[step].valid()) {
+    msg.className='status-msg error';
+    msg.textContent='Please answer both reflection questions before submitting.';
+    return;
+  }
+  if (APPS_SCRIPT_URL === "YOUR_APPS_SCRIPT_URL_HERE") {
+    msg.className='status-msg error';
+    msg.textContent='Setup needed: replace YOUR_APPS_SCRIPT_URL_HERE in this file with your Google Apps Script URL.';
+    return;
+  }
+
   btn.disabled = true;
   msg.className = 'status-msg';
   msg.textContent = 'Submitting your responses...';
 
-  const allInd = [...d.industries,...(d.otherIndustry.trim()?[d.otherIndustry.trim()]:[])] ;
-  const focus = `I am looking for an internship in ${d.fields.join(' or ')} within the ${allInd.join(' or ')} industry.`;
-  const row = {
+  const allInd = [...d.industries,...(d.otherIndustry.trim()?[d.otherIndustry.trim()]:[])];
+  const payload = {
     timestamp: new Date().toLocaleString('en-US'),
     name: `${d.firstName} ${d.lastName}`,
     grade: d.grade,
@@ -622,50 +395,37 @@ async function submitForm() {
     fields: d.fields.join('; '),
     whyField: d.whyField,
     industries: allInd.join('; '),
-    focusStatement: focus,
+    focusStatement: `I am looking for an internship in ${d.fields.join(' or ')} within the ${allInd.join(' or ')} industry.`,
     surprise: d.surprise,
     uncertain: d.uncertain
   };
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:1000,
-        system:`You are a Google Sheets assistant. Append the student data to a Google Sheet named "Fellowship Internship Responses 2025". If the sheet does not exist, create it with these exact column headers in row 1: Timestamp, Student Name, Grade, Strengths, Interests, Business Field(s), Why This Field, Industry/Industries, Focus Statement, Surprise Reflection, Uncertainty Reflection. Then add the student data as a new row. Respond ONLY with valid JSON (no markdown): {"success":true,"message":"string"} or {"success":false,"message":"string"}.`,
-        messages:[{role:'user',content:`Add this student response: ${JSON.stringify(row)}`}],
-        mcp_servers:[{type:'url',url:'https://drivemcp.googleapis.com/mcp/v1',name:'google-drive'}]
-      })
+    // Google Apps Script requires no-cors mode from external pages
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     });
-    const json = await res.json();
-    let result = {success:false, message:'Could not parse server response.'};
-    try {
-      const tb = (json.content||[]).find(b=>b.type==='text');
-      if (tb) result = JSON.parse(tb.text.replace(/```json|```/g,'').trim());
-    } catch(e) {}
 
-    if (result.success) {
-      document.getElementById('step-card').innerHTML = `
-        <div class="success-screen">
-          <div class="success-icon">🎓</div>
-          <h1 class="success-title">You're all set, ${d.firstName}!</h1>
-          <p class="section-eyebrow" style="margin-bottom:12px">Your focus statement</p>
-          <div class="focus-card" style="margin-bottom:20px">
-            <div class="focus-text">${buildFocus()}</div>
-          </div>
-          <p class="success-desc">Your responses have been submitted to Ms. Taylor. Keep your focus statement in mind as you begin exploring internship opportunities — it'll be the foundation of your outreach.</p>
-        </div>`;
-      document.getElementById('prog-fill').style.width = '100%';
-      document.getElementById('step-counter').textContent = 'Complete ✓';
-      window.scrollTo({top:0,behavior:'smooth'});
-    } else {
-      throw new Error(result.message||'Unknown error');
-    }
+    document.getElementById('step-card').innerHTML = `
+      <div class="success-screen">
+        <div class="success-icon">🎓</div>
+        <h1 class="success-title">You're all set, ${d.firstName}!</h1>
+        <p class="section-eyebrow" style="margin-bottom:12px">Your focus statement</p>
+        <div class="focus-card" style="margin-bottom:20px">
+          <div class="focus-text">${buildFocus()}</div>
+        </div>
+        <p class="success-desc">Your responses have been submitted to Ms. Taylor. Keep your focus statement in mind as you begin exploring internship opportunities — it will be the foundation of your outreach.</p>
+      </div>`;
+    document.getElementById('prog-fill').style.width = '100%';
+    document.getElementById('step-counter').textContent = 'Complete ✓';
+    window.scrollTo({top:0,behavior:'smooth'});
+
   } catch(e) {
     msg.className = 'status-msg error';
-    msg.textContent = `Something went wrong — please let Ms. Taylor know. (${e.message})`;
+    msg.textContent = 'Something went wrong. Please try again or let Ms. Taylor know. (' + e.message + ')';
     btn.disabled = false;
   }
 }
