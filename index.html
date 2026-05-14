@@ -137,7 +137,7 @@
 // STEP 1: Paste your Google Apps Script Web App URL below.
 // Replace everything between the quotes on the next line.
 // ---------------------------------------------------------------
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw01lCK9_ogcnrtWfJXIuNU_DOnbu7CAGN6oZK6Le8_qyUR9LSfFuOvfcByFcN1_40irA/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyktwCWsE0RTpGA3LA4yYjLO1e-nHC89jocKCzH--p_2REBBls9P0q-Mw_Iafnes9O4DQ/exec";
 // ---------------------------------------------------------------
 
 const STEP_LABELS = ['About you','Strengths','Interests','Field + industry','Reflection'];
@@ -342,6 +342,11 @@ function updateProgress() {
     `<span class="progress-dot ${i<step?'done':i===step?'active':''}">${l}</span>`).join('');
 }
 
+function checkValid() {
+  const btn = document.getElementById('btn-next');
+  if (btn) btn.disabled = !STEPS[step].valid();
+}
+
 function render() {
   const s = STEPS[step];
   const isLast = step === TOTAL - 1;
@@ -352,11 +357,15 @@ function render() {
     ${s.body()}
     ${!isLast ? `<div class="nav">
       ${step > 0 ? '<button type="button" class="btn-back" onclick="goBack()">← Back</button>' : ''}
-      <button type="button" class="btn-next" id="btn-next" onclick="goNext()">${step===0?'Get started →':'Continue →'}</button>
+      <button type="button" class="btn-next" id="btn-next" onclick="goNext()" disabled>${step===0?'Get started →':'Continue →'}</button>
     </div>` : ''}
   `;
   updateProgress();
-  setTimeout(()=>{ const btn=document.getElementById('btn-next'); if(btn) btn.disabled=!s.valid(); }, 10);
+  document.querySelectorAll('#step-card input, #step-card select, #step-card textarea').forEach(el => {
+    el.addEventListener('input', checkValid);
+    el.addEventListener('change', checkValid);
+  });
+  setTimeout(checkValid, 10);
 }
 
 function goNext() {
@@ -375,7 +384,7 @@ async function submitForm() {
     msg.textContent='Please answer both reflection questions before submitting.';
     return;
   }
-  if (APPS_SCRIPT_URL === "YOUR_APPS_SCRIPT_URL_HERE") {
+  if (APPS_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbzyXkG1stiOI1J45x-pXR69rFv1ecocbbjsVjvwN9q8l92RbaSAAFERVZ9Cc1YG2N5-Jg/exec") {
     msg.className='status-msg error';
     msg.textContent='Setup needed: replace YOUR_APPS_SCRIPT_URL_HERE in this file with your Google Apps Script URL.';
     return;
@@ -434,3 +443,4 @@ render();
 </script>
 </body>
 </html>
+
